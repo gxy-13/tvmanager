@@ -1,6 +1,6 @@
 package com.study.controller;
 
-import com.study.service.UserMapperImpl;
+import com.study.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +14,11 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     @Autowired
-    UserMapperImpl userMapperImpl;
+    UserServiceImpl userServiceImpl;
 
 
     /**
-     * @author 管鑫逸 2018150353
+     * @author 陈晨 2018150347
      * @param username
      * @param password
      * @param session
@@ -33,7 +33,7 @@ public class LoginController {
         System.out.println("进入了请求login。。。");
         System.out.println(username);
         System.out.println(password);
-        if(userMapperImpl.login(username, password)!=null){
+        if(userServiceImpl.login(username, password)!=null){
             System.out.println("登陆成功");
             session.setAttribute("LoginUser",username);
             return "redirect:/main.html";

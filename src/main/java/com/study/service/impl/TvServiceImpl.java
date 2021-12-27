@@ -1,14 +1,15 @@
-package com.study.service;
+package com.study.service.impl;
 
-import com.study.bean.Tv;
+import com.study.pojo.Tv;
 import com.study.mapper.TvMapper;
+import com.study.service.TvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class TvMapperImpl {
+public class TvServiceImpl implements TvService {
 
     @Autowired
     TvMapper tvMapper;

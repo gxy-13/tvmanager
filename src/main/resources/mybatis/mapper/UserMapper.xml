@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.mapper.UserMapper">
-    <select id="login" parameterType="java.lang.String" resultType="com.study.bean.User">
+    <select id="login" parameterType="java.lang.String" resultType="com.study.pojo.User">
         select * from users where `username`=#{username} and  `password`=#{password}
     </select>
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 public class LoginInterceptor  implements HandlerInterceptor {
     /**
      * 目标方法执行之前
+     * @author 陈晨 2018150347
      * @param request
      * @param response
      * @param handler

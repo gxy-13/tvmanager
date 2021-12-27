@@ -2,20 +2,22 @@ package com.study.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.study.bean.Tv;
-import com.study.service.TvMapperImpl;
+import com.study.pojo.Tv;
+import com.study.service.impl.TvServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
 @RequestMapping("/tv")
 public class TvController {
     @Autowired
-    TvMapperImpl tvMapperImpl;
+    TvServiceImpl tvServiceImpl;
 
     /**
      * 分页
@@ -27,7 +29,7 @@ public class TvController {
     @RequestMapping("/list")
     public String selectAll(Model model,@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum){
         PageHelper.startPage(pageNum,5);
-        List<Tv> tvs = tvMapperImpl.allTv();
+        List<Tv> tvs = tvServiceImpl.allTv();
         for (Tv tv : tvs) {
             System.out.println(tv);
         }
@@ -55,46 +57,42 @@ public class TvController {
         if(tv==null){
            model.addAttribute("msg","输入内容不能有空");
         }
-        tvMapperImpl.add(tv);
+        tvServiceImpl.add(tv);
 //        重定向进主页面
         return "redirect:/tv/list";
     }
 
-    /**
-     * 修改电视
-     * @author 管鑫逸 201810353
-     * @param pno
-     * @param model
-     * @return
-     */
-    @RequestMapping("/toUpdate/{pno}")
-    public String toUpdate(@PathVariable("pno")int pno,
+
+    @RequestMapping("/toUpdate/{id}")
+    public String toUpdate(@PathVariable("id")int id,
                            Model model){
-        System.out.println(pno);
-         Tv tv = tvMapperImpl.selectByPno(pno);
+        System.out.println(id);
+         Tv tv = tvServiceImpl.selectByPno(id);
          model.addAttribute("tv",tv);
          return "tvs/update";
     }
+
+    /**
+     * @author 管鑫逸 2018150353
+     * @param tv
+     * @return
+     */
     @RequestMapping("/update")
     public String update(Tv tv){
         System.out.println(tv);
-        int i = tvMapperImpl.update(tv);
+        int i = tvServiceImpl.update(tv);
         if(i>0){
             System.out.println("修改成功");
         }
         return "redirect:/tv/list";
     }
 
-    /**
-     * 删除电视
-     * @author 管鑫逸 2018150353
-     * @param pno
-     * @return
-     */
-    @RequestMapping("/del/{pno}")
-    public String del(@PathVariable("pno")int pno){
-        tvMapperImpl.del(pno);
+
+    @RequestMapping("/del/{id}")
+    public String del(@PathVariable("id")int id){
+        tvServiceImpl.del(id);
         return "redirect:/tv/list";
     }
+
 
 }

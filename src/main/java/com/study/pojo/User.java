@@ -1,4 +1,4 @@
-package com.study.bean;
+package com.study.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

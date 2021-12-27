@@ -3,19 +3,19 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.mapper.TvMapper">
-    <select id="allTv"  resultType="com.study.bean.Tv">
+    <select id="allTv"  resultType="com.study.pojo.Tv">
         select * from tvs
     </select>
-    <insert id="add" parameterType="com.study.bean.Tv">
-        insert tvs values(#{pno},#{brand},#{price},#{size},#{sell})
+    <insert id="add" parameterType="com.study.pojo.Tv">
+        insert tvs values(null,#{pno},#{brand},#{price},#{size},#{sell})
     </insert>
-    <select id="selectByPno" resultType="com.study.bean.Tv">
-        select  * from  tvs where pno=#{pno}
+    <select id="selectByPno" resultType="com.study.pojo.Tv">
+        select  * from  tvs where id=#{id}
     </select>
-    <update id="update" parameterType="com.study.bean.Tv">
-        update  tvs set `brand`=#{brand},`price`=#{price},`size`=#{size},`sell`=#{sell} where pno=#{pno}
+    <update id="update" parameterType="com.study.pojo.Tv">
+        update  tvs set `pno`=#{pno},`brand`=#{brand},`price`=#{price},`size`=#{size},`sell`=#{sell} where `id`=#{id}
     </update>
     <delete id="del" >
-        delete  from tvs where pno=#{pno}
+        delete  from tvs where id=#{id}
     </delete>
 </mapper>

@@ -1,12 +1,12 @@
-package com.study.mapper;
+package com.study.service;
 
 import com.study.pojo.Tv;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper
-public interface TvMapper {
+public interface TvService {
+
+
     List<Tv> allTv();
     int add(Tv tv);
     Tv selectByPno(int pno);

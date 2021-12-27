@@ -75,8 +75,8 @@
 								<td th:text="${tv.getSize()}"></td>
 								<td th:text="${#dates.format(tv.getSell(),'yyyy-MM-dd HH:mm:ss')}"></td>
 								<td >
-									<a class="btn btn-sm btn-primary" th:href="@{/tv/toUpdate/}+${tv.getPno()}">编辑</a>
-									<a class="btn btn-sm btn-danger" th:href="@{/tv/del/}+${tv.getPno()}">删除</a>
+									<a class="btn btn-sm btn-primary" th:href="@{/tv/toUpdate/}+${tv.getId()}">编辑</a>
+									<a class="btn btn-sm btn-danger" th:href="@{/tv/del/}+${tv.getId()}">删除</a>
 								</td>
 							</tr>
 							</tbody>
